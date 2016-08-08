@@ -30,7 +30,7 @@
         <c:when test="${not empty error}">
           <div class="alert alert-danger">
             <a class="close" data-dismiss="alert" href="#">x</a>
-            <spring:message code="msg.error.invalid.credientals" />
+            Invalid username or password
             <br />
           </div>
           <div class="panel panel-danger">
