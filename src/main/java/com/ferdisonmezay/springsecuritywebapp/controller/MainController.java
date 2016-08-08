@@ -11,5 +11,20 @@ public class MainController {
 	public String mainController(Model model) {
 		return "index";
 	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(ModelMap model) {
+	  return "login/login";
+	}
 
+	@RequestMapping(value = "/loginfailed", method = RequestMethod.GET)
+	public String loginerror(ModelMap model) {
+	  model.addAttribute("error", "true");
+	  return "login/login";
+	}
+
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(ModelMap model) {
+	  return "index";
+	}
 }
