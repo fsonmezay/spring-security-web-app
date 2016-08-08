@@ -6,6 +6,32 @@
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>springsecuritywebapp</name>
+  <description>Ferdi Sonmezay | Spring Security Web App</description>
+  <developers>
+    <developer>
+      <name>Ferdi Sonmezay</name>
+      <id>fsonmezay</id>
+      <email>ferdi@ferdisonmezay.com</email>
+      <organization>www.ferdisonmezay.com</organization>
+      <roles>
+        <role>Software Developer</role>
+      </roles>
+    </developer>
+  </developers>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.mortbay.jetty</groupId>
+        <artifactId>maven-jetty-plugin</artifactId>
+        <version>6.1.26</version>
+      </plugin>
+    </plugins>
+  </build>
   <url>http://maven.apache.org</url>
   <dependencies>
     <dependency>
