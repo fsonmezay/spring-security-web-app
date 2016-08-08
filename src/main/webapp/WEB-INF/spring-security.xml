@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+  xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+  <http auto-config="true" access-denied-page="/accessdenied">
+    <intercept-url pattern="/login" access="ROLE_ANONYMOUS"/>
+    <intercept-url pattern="/loginfailed" access="ROLE_ANONYMOUS"/>
+    <intercept-url pattern="/books" access="ROLE_USER,ROLE_SUPER_USER"/>
+    <intercept-url pattern="/*" access="ROLE_USER, ROLE_SUPER_USER" />
+    <intercept-url pattern="/admin/*" access="ROLE_SUPER_USER" />
+    <form-login login-page="/login" default-target-url="/success" authentication-failure-url="/loginfailed" />
+    <logout logout-success-url="/logout" />
+  </http>
+
+  <authentication-manager>
+    <authentication-provider>
+      <password-encoder hash="md5" />
+      <user-service>
+        <!-- user: sudo , password: su -->
+        <user name="sudo"
+              password="0b180078d994cb2b5ed89d7ce8e7eea2"
+              authorities="ROLE_SUPER_USER, ROLE_USER" />
+
+        <!-- user: webuser , password: user1 -->
+        <user name="webuser"
+              password="24c9e15e52afc47c225b757e7bee1f9d"
+              authorities="ROLE_USER" />
+      </user-service>
+    </authentication-provider>
+  </authentication-manager>
+
+  <beans:bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
+
+</beans:beans>
