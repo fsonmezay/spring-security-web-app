@@ -11,11 +11,30 @@
  						http://www.springframework.org/schema/mvc
  						http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
+	<import resource="classpath:dataSource.xml" />
+	
 	<mvc:annotation-driven />
+	
 	<context:component-scan base-package="com.ferdisonmezay.springsecuritywebapp" />
+	
+	<mvc:resources mapping="/resources/**" location="/resources/" />
 	<mvc:resources mapping="/webapp/web_resource/**" location="/web_resource/" />
 	<mvc:default-servlet-handler/>
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-		p:prefix="/WEB-INF/pages/" p:suffix=".jsp" />
+	
+  
+  <bean
+    class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+    p:prefix="/WEB-INF/pages/" p:suffix=".jsp" />
+  
+  <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+      <property name="basenames">
+        <list>
+            <value>classpath:messages</value>
+            <value>classpath:messages_tr</value>
+            
+            <value>classpath:labels</value>
+            <value>classpath:labels_tr</value>
+        </list>
+      </property>
+    </bean>
 </beans>

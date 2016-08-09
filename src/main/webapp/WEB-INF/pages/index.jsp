@@ -1,51 +1,39 @@
-
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Spring Security Web App</title>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/web_resource/css/bootstrap.min.css">
-</head>
-<body>
-  <nav class="navbar navbar-default navbar-fixed-top">
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<jsp:include page="./common/headTag.jsp" />
+<jsp:include page="./common/bodyHeader.jsp" />
+    
     <div class="container">
-      <div>
-        <div style="float: left; width: 60px;">
-          <img style="width: 40px; margin-top: 4px;" alt="Ferdi Sonmezay | Spring Security Web App" src="${pageContext.request.contextPath}/web_resource/images/logo.png">
+    <div class="jumbotron" style="background-image: url('${pageContext.request.contextPath}/web_resource/images/banner.png');">
+          <h1>Spring Bootstrap App</h1>
+          <p class="lead">
+          Spring Maven Hibernate Bootstrap template application
+          </p>
         </div>
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="./"> | Spring Security Web App</a>
+        
+        <div class="row">
+          <div class="col-md-12">
+            <div class="well">
+              <h1>Header</h1>
+          </p>
+          <p>
+            Lorem Ipsum, 
+          </p>
+          <p>
+          <sec:authorize access="hasRole('ROLE_USER')">
+            <a href="${pageContext.request.contextPath}/admin/roles">Test Authorization (admin/roles)</a>
+          </sec:authorize>
+          </p>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="collapse navbar-collapse pull-right">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="./"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-          <li><a href="${pageContext.request.contextPath}/books">Books</a></li>
-          <li><a href="<c:url value="/j_spring_security_logout" />">Logout</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <div class="container" style="margin-top: 90px;">
-    <div class="jumbotron">
-      <h1>Spring Bootstrap App</h1>
-      <p class="lead">Spring Maven Hibernate Bootstrap template application</p>
-    </div>
-  </div>
-
-  <script src="${pageContext.request.contextPath}/web_resource/js/jquery.min.js"></script>
-	<script src="${pageContext.request.contextPath}/web_resource/js/bootstrap.min.js"></script>
+        
+    </div> <!-- container -->
+  
+ <jsp:include page="./common/footer.jsp" />
 </body>
+
 </html>
